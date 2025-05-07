@@ -1,0 +1,92 @@
+Microsoft Windows [Version 10.0.19045.5737]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Lenovo>cd \xampp\apache
+
+C:\xampp\apache>openssl genrsa -out server.key 2048
+'openssl' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\xampp\apache>cd \xampp\apache\bin
+
+C:\xampp\apache\bin>openssl genrsa -out server.key 2048
+
+C:\xampp\apache\bin>openssl req -new -key server.key -out server.csr
+Can't open "C:\Apache24\conf/openssl.cnf" for reading, No such file or directory
+E4380000:error:80000003:system library:BIO_new_file:No such process:crypto\bio\bss_file.c:67:calling fopen(C:\Apache24\conf/openssl.cnf, r)
+E4380000:error:10000080:BIO routines:BIO_new_file:no such file:crypto\bio\bss_file.c:75:
+
+C:\xampp\apache\bin>C:\xampp\apache\conf\openssl.cnf
+
+C:\xampp\apache\bin>openssl req -new -key server.key -out server.csr
+Can't open "C:\Apache24\conf/openssl.cnf" for reading, No such file or directory
+B4320000:error:80000003:system library:BIO_new_file:No such process:crypto\bio\bss_file.c:67:calling fopen(C:\Apache24\conf/openssl.cnf, r)
+B4320000:error:10000080:BIO routines:BIO_new_file:no such file:crypto\bio\bss_file.c:75:
+
+C:\xampp\apache\bin>C:\xampp\apache\conf\openssl.cnf
+
+C:\xampp\apache\bin>openssl req -new -key server.key -out server.csr -config ..\conf\openssl.cnf
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:IN
+State or Province Name (full name) [Some-State]:Karnataka
+Locality Name (eg, city) []:Bangalore
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:MyCompany
+Organizational Unit Name (eg, section) []:Dev
+Common Name (e.g. server FQDN or YOUR name) []:localhost
+Email Address []:admin@localhost.local
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:
+
+C:\xampp\apache\bin>openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+Certificate request self-signature ok
+subject=C = IN, ST = Karnataka, L = Bangalore, O = MyCompany, OU = Dev, CN = localhost, emailAddress = admin@localhost.local
+
+C:\xampp\apache\bin>C:\xampp\apache\conf\ssl
+'C:\xampp\apache\conf\ssl' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\xampp\apache\bin>mkdir ..\conf\ssl
+
+C:\xampp\apache\bin>move server.key ..\conf\ssl\
+        1 file(s) moved.
+
+C:\xampp\apache\bin>move server.crt ..\conf\ssl\
+        1 file(s) moved.
+
+C:\xampp\apache\bin>httpd -k restart
+[Sat Apr 12 11:21:10.739744 2025] [mpm_winnt:error] [pid 6716:tid 468] (OS 2)The system cannot find the file specified.  : AH00436: No installed service named "Apache2.4".
+
+C:\xampp\apache\bin>httpd -k restart
+[Sat Apr 12 11:23:14.235075 2025] [mpm_winnt:error] [pid 12816:tid 436] (OS 2)The system cannot find the file specified.  : AH00436: No installed service named "Apache2.4".
+
+C:\xampp\apache\bin>
+C:\xampp\apache\bin>C:\xampp\apache\bin>httpd -k restart
+'C:\xampp\apache\bin' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\xampp\apache\bin>[Sat Apr 12 11:21:10.739744 2025] [mpm_winnt:error] [pid 6716:tid 468] (OS 2)The system cannot find the file specified.  : AH00436: No installed service named "Apache2.4".
+'[Sat' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\xampp\apache\bin>
+C:\xampp\apache\bin>C:\xampp\apache\bin>httpd -k restart
+'C:\xampp\apache\bin' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\xampp\apache\bin>[Sat Apr 12 11:23:14.235075 2025] [mpm_winnt:error] [pid 12816:tid 436] (OS 2)The system cannot find the file specified.  : AH00436: No installed service named "Apache2.4".
+'[Sat' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\xampp\apache\bin>
+C:\xampp\apache\bin>httpd -k restart
+
+C:\xampp\apache\bin>
